@@ -1,5 +1,5 @@
 const mongoose = require ("mongoose");
-    const newSchema = new mongoose.Schema(
+    const newsSchema = new mongoose.Schema(
         {
             title: {
                 type: String,

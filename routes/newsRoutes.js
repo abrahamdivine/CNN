@@ -2,8 +2,6 @@ const express = require("express")
 const News = require("../models/news");
 const authMiddleware = require( "../middleware/authMiddleware")
 const router = express.Router();
-const newsRoutes = require("./routes/newsRoutes")
-
 
 //create post
 router.post("/", authMiddleware,async (req,res)=>{
@@ -15,14 +13,14 @@ router.post("/", authMiddleware,async (req,res)=>{
 });
 //read post
 router.get("/", authMiddleware,async (req,res)=>{
-    const News = await News.find()
+    const news = await News.find()
     res.json(news);
 })
 //update news
 router.put("/:id", authMiddleware, async (req,res)=>{
     const { title, body} = req.body;
 
-    const news = await News.findByIDAndUpdate(
+    const news = await News.findByIdAndUpdate(
         req.params.id,
         {title, body}, {new: true}
     )
